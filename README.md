@@ -2,6 +2,8 @@
 
 A modern e-commerce product catalog built with React, TypeScript, and Redux Toolkit.
 
+🚀 **Live Demo:** [View Demo](https://wingman-git-main-adarshs-projects-ba6ae725.vercel.app/)
+
 ## Features
 
 - Product listing with grid layout
