@@ -19,6 +19,7 @@ A modern e-commerce product catalog built with React, TypeScript, and Redux Tool
 - Vite (Build tool)
 
 ## Project Structure
+```plaintext
 my-ecommerce-catalog/
 ├── src/
 │ |── components/
@@ -33,7 +34,7 @@ my-ecommerce-catalog/
 ├── tsconfig.app.json
 ├── tsconfig.node.json
 └── .gitignore
-
+```
 ## Getting Started
 
 1. Clone the repository:
