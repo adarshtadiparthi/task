@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../store/productSlice';
+import { AppDispatch } from '../store';
+
+interface Product {
+    id: number;
+    title: string;
+    price: number;
+    image: string;
+    rating: { rate: number; count: number };
+}
 
 const ProductList: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { products, loading, error } = useSelector((state: any) => state.products);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('default');
@@ -15,7 +24,7 @@ const ProductList: React.FC = () => {
   }, [dispatch]);
 
   // Filter products based on search term
-  const filteredProducts = products.filter(product =>
+  const filteredProducts = products.filter((product: Product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
