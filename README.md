@@ -22,7 +22,7 @@ A modern e-commerce product catalog built with React, TypeScript, and Redux Tool
 
 ## Project Structure
 ```plaintext
-my-ecommerce-catalog/
+task/
 ├── src/
 │ |── components/
 │ │ ├── ProductList.tsx
@@ -42,7 +42,7 @@ my-ecommerce-catalog/
 1. Clone the repository:
 ```bash
 git clone https://github.com/adarshtadiparthi/task.git
-cd my-ecommerce-catalog
+cd task
 ```
 
 2. Install dependencies:
