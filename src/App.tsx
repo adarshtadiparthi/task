@@ -1,9 +1,13 @@
+// Import necessary dependencies from React and components
 import React, { useState, useEffect } from 'react';
 import ProductList from './components/ProductList';
 
+// Main App component
 const App: React.FC = () => {
+  // State to track dark/light mode
   const [darkMode, setDarkMode] = useState(false);
 
+  // Effect to handle dark mode class on document root
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -13,13 +17,16 @@ const App: React.FC = () => {
   }, [darkMode]);
 
   return (
+    // Main container with dark mode responsive classes
     <div className="min-h-screen transition-colors duration-200
                     dark:bg-gray-900 dark:text-white">
+      {/* Navigation bar */}
       <nav className="bg-white shadow-md dark:bg-gray-800">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-primary-600 dark:text-primary-400">
             E-commerce Catalog
           </h1>
+          {/* Dark mode toggle button */}
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 
@@ -39,6 +46,7 @@ const App: React.FC = () => {
           </button>
         </div>
       </nav>
+      {/* Product list component */}
       <ProductList />
     </div>
   );

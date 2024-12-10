@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../store/productSlice';
 import { AppDispatch } from '../store';
 
+//Product interface definition for type safety
 interface Product {
     id: number;
     title: string;
@@ -12,6 +13,7 @@ interface Product {
 }
 
 const ProductList: React.FC = () => {
+  // Redux and local state management
   const dispatch = useDispatch<AppDispatch>();
   const { products, loading, error } = useSelector((state: any) => state.products);
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,6 +21,7 @@ const ProductList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
+  // Fetch products on component mount
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -42,13 +45,13 @@ const ProductList: React.FC = () => {
     }
   });
 
-  // Calculate pagination
+  // Pagination logic
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
 
-  // Reset to first page when search term or sort option changes
+  // Reset pagination when search or sort changes
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, sortOption]);
@@ -104,10 +107,10 @@ const ProductList: React.FC = () => {
             className="bg-white rounded-lg shadow hover:shadow-md 
                         transition-all duration-300 animate-fade-in
                         dark:bg-gray-800 dark:text-white
-                        flex flex-col h-[300px]" // Fixed height for consistent card sizes
+                        flex flex-col h-[300px]" 
             >
             {/* Image Container */}
-            <div className="relative h-[160px] p-2"> {/* Reduced height */}
+            <div className="relative h-[160px] p-2"> 
                 <img 
                 src={product.image} 
                 alt={product.title} 
@@ -117,12 +120,12 @@ const ProductList: React.FC = () => {
             </div>
 
             {/* Content Container */}
-            <div className="p-3 flex flex-col flex-grow"> {/* Reduced padding */}
+            <div className="p-3 flex flex-col flex-grow"> 
                 <h2 className="text-sm font-semibold line-clamp-2 mb-1 flex-grow">
                 {product.title}
                 </h2>
                 
-                <div className="mt-auto"> {/* Push price and rating to bottom */}
+                <div className="mt-auto"> 
                 <div className="flex justify-between items-center mb-2">
                     <span className="text-lg font-bold text-primary-600 dark:text-primary-400">
                     ${product.price.toFixed(2)}
